@@ -1,14 +1,23 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      Ionic Blank
+      Youtube Player
     </ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+  <div class="categories-wrapper">
+    <ion-label class="section-title">Catégories</ion-label>
+    <ion-scroll scrollX="true" class="categories-buttons-wrapper">
+      <button ion-button round color="danger">
+        <ion-icon name="ios-flame" style="margin-right: 10px;">
+          Tendances
+        </ion-icon>
+      </button>
+      <button ion-button round *ngFor="let categorie of categories">
+        {{categorie?.snippet?.title}}
+      </button>
+    </ion-scroll>
+  </div>
 </ion-content>
