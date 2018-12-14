@@ -4,7 +4,7 @@ import {Observable} from "rxjs";
 import {YoutubeAPIRequest} from "../../interfaces/youtube.interfaces";
 import {map} from "rxjs/operators";
 
-const API_KEY = 'AIzaSyBeIbavJ_ZXTAh85p5GQ4BH8REKPnaY_q0';
+const API_KEY = 'CLE_API';
 const API_URL = 'https://www.googleapis.com/youtube/v3';
 const REGION_CODE = 'FR';
 
@@ -22,5 +22,23 @@ export class YoutubeProvider {
             map((response : YoutubeAPIRequest) => {return response;})
         )
   }
+
+  public searchTrendingVideos(): Observable<YoutubeAPIRequest> {
+    return this.http
+        .get(API_URL + '/videos?part=snippet&chart=mostPopular&key=' + API_KEY + '&regionCode=' + REGION_CODE + '&maxResults=10')
+        .pipe(
+            map((response : YoutubeAPIRequest) => {return response;})
+        )
+  }
+
+  public searchVideos(categId: number = 1): Observable<YoutubeAPIRequest> {
+    return this.http
+        .get(API_URL + '/search?part=snippet&videoCategoryId=' + categId + '&key=' + API_KEY + '&maxResults=10&type=video&regionCode=' + REGION_CODE)
+        .pipe(
+            map((response: YoutubeAPIRequest) => {return response;})
+        )
+  }
+
+
 
 }

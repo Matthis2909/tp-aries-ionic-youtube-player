@@ -16,4 +16,14 @@ page-home {
     }
   }
 
+  .videos-wrapper {
+    .youtube-video-cell{
+      cursor: pointer;
+
+      img {
+        width: 120px;
+      }
+    }
+  }
+
 }

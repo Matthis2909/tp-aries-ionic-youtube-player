@@ -10,14 +10,26 @@
   <div class="categories-wrapper">
     <ion-label class="section-title">Catégories</ion-label>
     <ion-scroll scrollX="true" class="categories-buttons-wrapper">
-      <button ion-button round color="danger">
-        <ion-icon name="ios-flame" style="margin-right: 10px;">
-          Tendances
-        </ion-icon>
+      <button ion-button round color="danger" (tap)="searchTrendingVideos()">
+        <ion-icon name="ios-flame" style="margin-right: 10px;"></ion-icon>
+          Trending
       </button>
-      <button ion-button round *ngFor="let categorie of categories">
-        {{categorie?.snippet?.title}}
-      </button>
+      <div *ngFor="let categorie of categories">
+        <button ion-button round (tap)="searchVideos(categorie?.id)" *ngIf="categorie?.snippet?.assignable">
+          {{categorie?.snippet?.title}}
+        </button>
+      </div>
     </ion-scroll>
+  </div>
+
+  <div class="videos-wrapper">
+    <ion-label class="section-title">Vidéos</ion-label>
+    <ion-list class="videos-list">
+      <ion-item *ngFor="let video of videos" class="youtube-video-cell" (tap)="youtubePlayer.openVideo(video?.id?.videoId ? video?.id?.videoId : video?.id)">
+        <img [src]="video?.snippet?.thumbnails['default']?.url" item-start>
+        <h2>{{video?.snippet?.title}}</h2>
+        <p>{{video?.snippet?.description}}</p>
+      </ion-item>
+    </ion-list>
   </div>
 </ion-content>

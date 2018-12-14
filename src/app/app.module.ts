@@ -8,6 +8,7 @@ import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { YoutubeProvider } from '../providers/youtube/youtube';
 import {HttpClientModule} from "@angular/common/http";
+import {YoutubeVideoPlayer} from "@ionic-native/youtube-video-player";
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import {HttpClientModule} from "@angular/common/http";
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    YoutubeProvider
+    YoutubeProvider,
+    YoutubeVideoPlayer
   ]
 })
 export class AppModule {}

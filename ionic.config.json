@@ -1,5 +1,7 @@
 {
   "name": "youtubePlayer",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "ionic-angular"
 }
